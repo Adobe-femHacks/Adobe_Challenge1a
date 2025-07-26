@@ -52,32 +52,32 @@
             "page": 5
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Patient harm due to AI errors ",
             "page": 5
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Misuse of biomedical AI tools ",
             "page": 6
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Lack of transparency ",
             "page": 6
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Privacy and security ",
             "page": 6
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Gaps in accountability ",
             "page": 6
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Obstacles to implementation in real-world healthcare ",
             "page": 7
         },
@@ -87,12 +87,12 @@
             "page": 7
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Regulatory frameworks for AI ",
             "page": 7
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Risk minimisation through risk self-assessment ",
             "page": 7
         },
@@ -105,36 +105,6 @@
             "level": "H3",
             "text": "Policy options ",
             "page": 8
-        },
-        {
-            "level": "H3",
-            "text": "1. Extend AI regulatory frameworks and codes of practice to address healthcare-specific risks and requirements ",
-            "page": 8
-        },
-        {
-            "level": "H3",
-            "text": "2. Promote multi-stakeholder engagement and co-creation throughout the whole lifecycle of medical AI algorithms ",
-            "page": 8
-        },
-        {
-            "level": "H3",
-            "text": "3. Create an AI passport and traceability mechanisms for enhanced transparency and trust in medical AI ",
-            "page": 8
-        },
-        {
-            "level": "H3",
-            "text": "4. Develop frameworks to improve the definition of accountability and monitoring of responsibilities in medical AI ",
-            "page": 9
-        },
-        {
-            "level": "H3",
-            "text": "5. Introduce education programmes and campaigns to enhance the skills of healthcare professionals and the literacy of the general public in medical AI ",
-            "page": 9
-        },
-        {
-            "level": "H3",
-            "text": "6. Promote further research on clinical, ethical and technical robustness in medical AI ",
-            "page": 9
         },
         {
             "level": "H3",
@@ -162,304 +132,14 @@
             "page": 15
         },
         {
-            "level": "H2",
-            "text": "1.1. Objectives of this study ",
-            "page": 17
-        },
-        {
-            "level": "H4",
-            "text": "However, as with other technological advances, AI in the domain of healthcare comes with its specific benefits and risks, and needs its own set of regulatory frameworks that address the socio- ethical implications of its use. While the implementation of AI in healthcare holds great promise, this rapidly developing field also raises concerns for patients, healthcare systems and society; these concerns include issues of clinical safety, equitable access, privacy and security, appropriate use and users, as well as liability and regulation. Hence, researchers, the general public, and policymakers have all pointed to important bioethical issues, including how to evaluate the risks and benefits of AI in healthcare, how to establish accountability in the sphere of biomedical AI and how to regulate its use in this particularly high-stakes context. Another important question at the heart of the field is whether AI might increase inclusion and fairness in the treatment of traditionally underrepresented communities, or whether it runs the risk of perpetuating and augmenting pre- existing health disparities and inequities. ",
-            "page": 17
-        },
-        {
-            "level": "H2",
-            "text": "1.2. Methodology and resources used ",
-            "page": 17
-        },
-        {
-            "level": "H2",
-            "text": "1.3. Definitions ",
-            "page": 18
-        },
-        {
             "level": "H3",
             "text": "Figure 1 – Relationship between artificial intelligence, machine learning and deep learning ",
             "page": 19
         },
         {
             "level": "H2",
-            "text": "2.1. Artificial intelligence and healthcare needs ",
-            "page": 20
-        },
-        {
-            "level": "H3",
-            "text": "2.1.1. Main challenges for EU's healthcare systems ",
-            "page": 20
-        },
-        {
-            "level": "H3",
-            "text": "Ageing population and chronic diseases. In 2017, approximately 37% of the ageing population of the EU member states reported having at least two chronic diseases, on average. Among people aged 80 and over, 56% of women and 47% of men reported multiple chronic diseases on average across EU countries (OECD/European Union, 2020). ",
-            "page": 20
-        },
-        {
-            "level": "H3",
-            "text": "Lack of health personnel. European countries suffer from gaps in the supply and skill level of health personnel. An estimated overall shortfall of 1.6 million healthcare workers in the EU was reported in 2013; in order to compensate for this shortage, an annual exponential growth greater than 2% would be needed. However, as this rate of increase has not been reached, the expected shortage is anticipated to reach 4.1 million by 2030 (0.6 million physicians, 2.3 million nurses and 1.3 million other healthcare professionals) (WHO, 2016; Michel, 2020). ",
-            "page": 20
-        },
-        {
-            "level": "H3",
-            "text": "Inefficiency. There is ample evidence of widespread inefficiency in EU healthcare systems (OECD, 2017). While the relative ability of a particular healthcare system to transform resources into outcomes differs across countries, there is considerable waste of health-related resources, which contributes to excessive expenditure (Medeiros, 2015). ",
-            "page": 20
-        },
-        {
-            "level": "H3",
-            "text": "Sustainability . The issue relating to health-systems sustainability is rapidly growing in the EU. According to the OECD 'Health at a glance: Europe 2020' report, the EU spends 8.3% of its GDP on healthcare, with marked differences in spending across regions: in Germany and France, it is 11% and in Luxembourg and Romania, less than 6%. Health expenditure is projected to continue to escalate, mainly due to sociodemographic changes – the ageing population and the subsequent increase in chronic diseases and long-term care needs – as well as the impact of new technologies. In addition to the aforementioned challenges, in recent years EU healthcare systems have also been under significant pressure due to economic difficulties (Quaglio, 2020). The COVID ‑ 19 pandemic in particular is expected to increase the health spending share of GDP in multiple countries. ",
-            "page": 20
-        },
-        {
-            "level": "H3",
-            "text": "Healthcare inequities. Healthcare inequities and inequalities persist among the EU member states and their populations. The right of every EU citizen to timely access to affordable, preventive, and curative care of high quality is one of the key principles of the newly proclaimed European Pillar of Social Rights (European Commission. The European Pillar, 2021). A recent report identified several challenges and inequalities related to healthcare access, namely: (a) inadequate public resources invested in the healthcare system; (b) fragmented population coverage; (c) gaps in the range of benefits covered; (d) prohibitive user charges, in particular for pharmaceutical products; (e) lack of protection of vulnerable groups from user charges; (f) lack of transparency on how waiting list priorities are set; (g) inadequate availability of services, particularly in rural areas; (h) problems with ",
-            "page": 20
-        },
-        {
-            "level": "H3",
-            "text": "2.1.2. Main application domains for AI in healthcare ",
-            "page": 21
-        },
-        {
-            "level": "H2",
             "text": "AI tools in healthcare ",
             "page": 21
-        },
-        {
-            "level": "H2",
-            "text": "2.2. AI in clinical practice ",
-            "page": 21
-        },
-        {
-            "level": "H3",
-            "text": "2.2.1. Radiology ",
-            "page": 22
-        },
-        {
-            "level": "H3",
-            "text": "2.2.2. Digital pathology ",
-            "page": 22
-        },
-        {
-            "level": "H3",
-            "text": "2.2.3. Emergency medicine ",
-            "page": 22
-        },
-        {
-            "level": "H3",
-            "text": "2.2.4. Surgery ",
-            "page": 23
-        },
-        {
-            "level": "H3",
-            "text": "2.2.5. Risk prediction ",
-            "page": 23
-        },
-        {
-            "level": "H3",
-            "text": "2.2.6. Adaptive interventions ",
-            "page": 23
-        },
-        {
-            "level": "H3",
-            "text": "2.2.7. Home care ",
-            "page": 24
-        },
-        {
-            "level": "H3",
-            "text": "2.2.8. Cardiology ",
-            "page": 24
-        },
-        {
-            "level": "H3",
-            "text": "2.2.9. Nephrology ",
-            "page": 25
-        },
-        {
-            "level": "H3",
-            "text": "2.2.10. Hepatology ",
-            "page": 25
-        },
-        {
-            "level": "H3",
-            "text": "2.2.11. Mental health ",
-            "page": 26
-        },
-        {
-            "level": "H2",
-            "text": "2.3. AI in biomedical research ",
-            "page": 26
-        },
-        {
-            "level": "H3",
-            "text": "2.3.1. Clinical research ",
-            "page": 26
-        },
-        {
-            "level": "H3",
-            "text": "2.3.2. Drug discovery ",
-            "page": 27
-        },
-        {
-            "level": "H3",
-            "text": "2.3.3. Clinical trials ",
-            "page": 27
-        },
-        {
-            "level": "H3",
-            "text": "2.3.4. Personalised medicine ",
-            "page": 28
-        },
-        {
-            "level": "H2",
-            "text": "2.4. AI for public and global health ",
-            "page": 28
-        },
-        {
-            "level": "H3",
-            "text": "2.4.1. Public health ",
-            "page": 28
-        },
-        {
-            "level": "H3",
-            "text": "2.4.2. Global health ",
-            "page": 29
-        },
-        {
-            "level": "H2",
-            "text": "2.5. AI in healthcare administration ",
-            "page": 29
-        },
-        {
-            "level": "H3",
-            "text": "2.5.1. Coding ",
-            "page": 29
-        },
-        {
-            "level": "H3",
-            "text": "2.5.2. Scheduling ",
-            "page": 30
-        },
-        {
-            "level": "H3",
-            "text": "2.5.3. Detection of fraudulent activity ",
-            "page": 30
-        },
-        {
-            "level": "H3",
-            "text": "2.5.4. Patient flow management ",
-            "page": 30
-        },
-        {
-            "level": "H3",
-            "text": "2.5.5. Healthcare audits ",
-            "page": 30
-        },
-        {
-            "level": "H3",
-            "text": "Figure 3 – Summary of causes and consequences of errors and failures of medical AI algorithms, together with some recommendations for potential mitigation ",
-            "page": 32
-        },
-        {
-            "level": "H2",
-            "text": "3.2. Misuse of medical AI tools ",
-            "page": 33
-        },
-        {
-            "level": "H3",
-            "text": "Figure 4 – Main factors that can lead to incorrect use of medical AI algorithms by clinicians and citizens and potential mitigation measures to improve usability of future algorithms ",
-            "page": 34
-        },
-        {
-            "level": "H1",
-            "text": "3.3. Risk of bias in medical AI and perpetuation of inequities ",
-            "page": 36
-        },
-        {
-            "level": "H3",
-            "text": "Figure 5 – Most common biases and their causes in medical AI, and potential mitigation measures to develop AI algorithms with increased fairness and equity ",
-            "page": 36
-        },
-        {
-            "level": "H2",
-            "text": "3.4. Lack of transparency ",
-            "page": 38
-        },
-        {
-            "level": "H3",
-            "text": "Figure 6 – Main risks resulting from the current lack of transparency associated with AI algorithms followed by possible mitigation measures ",
-            "page": 38
-        },
-        {
-            "level": "H2",
-            "text": "3.5. Privacy and security issues ",
-            "page": 39
-        },
-        {
-            "level": "H3",
-            "text": "Figure 7 – Main privacy and security risks associated with big data and AI, and some mitigation measures ",
-            "page": 40
-        },
-        {
-            "level": "H2",
-            "text": "3.6. Gaps in AI accountability ",
-            "page": 41
-        },
-        {
-            "level": "H3",
-            "text": "Figure 8 – Current limitations in accountability and recommendations to fill in these gaps ",
-            "page": 42
-        },
-        {
-            "level": "H3",
-            "text": "Figure 9 – Obstacles for clinical implementation and integration of new AI tools in real- world healthcare practice, together with potential mitigation measures ",
-            "page": 44
-        },
-        {
-            "level": "H2",
-            "text": "4.1. Regulatory frameworks for AI ",
-            "page": 46
-        },
-        {
-            "level": "H3",
-            "text": "Figure 10 – AI risk classification according to the 2021 EU proposal on AI legislation ",
-            "page": 48
-        },
-        {
-            "level": "H1",
-            "text": "4.2. Risk minimisation through risk self-assessment ",
-            "page": 49
-        },
-        {
-            "level": "H3",
-            "text": "Figure 11 – Recommendations for improved evaluation of algorithm performance and risks in medical AI ",
-            "page": 52
-        },
-        {
-            "level": "H3",
-            "text": "4.3.1. Standardised definition of clinical tasks ",
-            "page": 53
-        },
-        {
-            "level": "H2",
-            "text": "4.3.2. Multi-faceted evaluation of performance beyond accuracy ",
-            "page": 53
-        },
-        {
-            "level": "H3",
-            "text": "Table 2 – Examples of performance elements for imaging AI algorithms (from Larson, et. al., 2021) ",
-            "page": 54
-        },
-        {
-            "level": "H2",
-            "text": "4.3.3. Subdivision of the evaluation process into discrete phases. ",
-            "page": 56
         },
         {
             "level": "H3",
@@ -468,68 +148,8 @@
         },
         {
             "level": "H3",
-            "text": "Table 3 – Excerpts of subdivided evaluation process for medical AI, based on processes implemented in the drug development sector (Park et al., 2020) ",
-            "page": 57
-        },
-        {
-            "level": "H2",
-            "text": "4.3.1. Promotion of external evaluations by third-party evaluators ",
-            "page": 58
-        },
-        {
-            "level": "H2",
-            "text": "4.3.2. Standardised and comprehensive reporting of the AI evaluation procedure and results ",
-            "page": 59
-        },
-        {
-            "level": "H3",
             "text": "Table 4 – Reporting elements from the MINMAR reporting guidelines ",
             "page": 60
-        },
-        {
-            "level": "H4",
-            "text": "1. Model related information (e.g. model owners, developers and reviewers, intended clinical uses, applicable licences(s), algorithmic details, hyper-parameters, key assumptions and requirements). ",
-            "page": 64
-        },
-        {
-            "level": "H4",
-            "text": "2. Data related information (training vs. testing data, data types e.g. imaging, real vs. simulated datasets, data origins). ",
-            "page": 64
-        },
-        {
-            "level": "H4",
-            "text": "3. Evaluation related information (model accuracy, robustness, biases, limitations and extreme cases). ",
-            "page": 64
-        },
-        {
-            "level": "H4",
-            "text": "4. Usage related information (e.g. statistical distributions, (dis)agreements with clinicians, identified failures, memory usage, etc.). ",
-            "page": 64
-        },
-        {
-            "level": "H4",
-            "text": "5. Maintenance related information (last updates, software versioning, last periodic evaluation, dates, etc.). ",
-            "page": 64
-        },
-        {
-            "level": "H3",
-            "text": "Figure 14 – Example of a possible AI passport that can be used to improve traceability and transparency in medical AI, by documenting all key details about the AI tools, their intended use, model and data details, evaluation results, and information from continuous monitoring and auditing ",
-            "page": 65
-        },
-        {
-            "level": "H1",
-            "text": "5.4. Develop frameworks to better define accountability and monitor responsibilities in medical AI ",
-            "page": 65
-        },
-        {
-            "level": "H1",
-            "text": "5.5. Introduce education programmes to enhance the skills of healthcare professionals and the literacy of the general public ",
-            "page": 66
-        },
-        {
-            "level": "H4",
-            "text": "EGA Consortium (European Genome-Phenome Archive), https://ega-archive.org/datasets , 2021. ",
-            "page": 72
         }
     ]
 }

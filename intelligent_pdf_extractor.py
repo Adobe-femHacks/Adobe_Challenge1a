@@ -221,7 +221,17 @@ class IntelligentDocumentAnalyzer:
         alpha_chars = len(re.sub(r'[^a-zA-Z]', '', text))
         if alpha_chars < 3:
             return False
-        
+
+        # NEW: Skip long sentences/paragraphs (likely not headings)
+        if word_count > 12:
+            return False
+        # NEW: Skip if sentence ends with a period and is long (likely a paragraph)
+        if word_count > 8 and text_clean.endswith('.'):
+            return False
+        # NEW: Skip if sentence contains multiple sentences (periods inside)
+        if text_clean.count('.') > 1:
+            return False
+
         # Layer 1: Structural headings (highest priority)
         for pattern in self.primary_heading_patterns:
             if re.match(pattern, text_lower):
@@ -234,32 +244,26 @@ class IntelligentDocumentAnalyzer:
         
         # Layer 3: Document-type specific advanced patterns
         if doc_type == 'technical':
-            # Technical document specific patterns
             if self._is_technical_heading(text_lower, word_count):
                 return True
-                
         elif doc_type == 'business':
-            # Advanced business document analysis
             if self._is_business_heading(text_lower, text_clean, word_count):
                 return True
-                
         elif doc_type == 'educational':
-            # Educational document patterns
             if self._is_educational_heading(text_lower, word_count):
                 return True
-                
         elif doc_type == 'event':
-            # Event document patterns
             if self._is_event_heading(text_lower, word_count):
                 return True
         
         # Layer 4: Advanced formatting analysis
         if self._analyze_formatting_context(block, text_clean, word_count, doc_analysis):
-            return True
+            # NEW: Only allow as heading if not a paragraph (short, not ending with period)
+            if word_count <= 12 and not (word_count > 8 and text_clean.endswith('.')):
+                return True
         
         # Layer 5: Fallback for very specific patterns we might have missed
         if doc_type == 'event':
-            # More aggressive event heading detection
             if ('hope' in text_lower or 'see' in text_lower or 'there' in text_lower) and word_count <= 8:
                 return True
         
@@ -669,7 +673,7 @@ class IntelligentPDFExtractor:
         body_size = font_analysis.get('body_size', 11)
         word_count = len(text.split())
         doc_type = doc_analysis.get('type', 'unknown')
-        
+
         # High-level structural elements (H1)
         h1_patterns = [
             r'^(revision\s+history|table\s+of\s+contents|acknowledgements?|references?)$',
@@ -709,46 +713,69 @@ class IntelligentPDFExtractor:
                 return 'H2'
             else:
                 return 'H3'
-        
+
         # Questions and "what could" patterns
         if text.startswith(('what could', 'what ', 'how ', 'why ')):
             return 'H3'
-        
+
         # "For each" patterns
         if text.startswith('for each'):
             return 'H4'
-        
+
         # Advanced font-based analysis with context
         font_ratio = block.font_size / body_size if body_size > 0 else 1
-        
+
         # Combine multiple factors for level determination
         level_score = 0
-        
+
         if font_ratio >= 1.4:
             level_score += 3
         elif font_ratio >= 1.2:
             level_score += 2
         elif font_ratio >= 1.1:
             level_score += 1
-        
+
         if block.is_bold:
             level_score += 1
-        
+
         if block.is_all_caps:
             level_score += 2
-        
+
         if block.is_centered:
             level_score += 1
-        
-        # Determine level based on score
+
+        # NEW: Stricter H4 assignment - only allow H4 for short, list-like, or clear heading patterns
+        # Only assign H4 if text is short and looks like a list item or subheading, not a paragraph
         if level_score >= 4:
             return 'H1'
         elif level_score >= 3:
             return 'H2'
         elif level_score >= 2:
-            return 'H3'
+            # Only allow H4 if text is short and not a paragraph
+            if (
+                word_count <= 8 and
+                (
+                    re.match(r'^\d+[\.\)]', text_clean) or  # numbered list
+                    (block.is_all_caps and word_count <= 6) or
+                    (text_clean.endswith(':') and word_count <= 8)
+                )
+            ):
+                return 'H4'
+            else:
+                return 'H3'
         else:
-            return 'H4'
+            # Only assign H4 if it's a short, list-like heading, not a paragraph
+            if (
+                word_count <= 8 and
+                (
+                    re.match(r'^\d+[\.\)]', text_clean) or
+                    (block.is_all_caps and word_count <= 6) or
+                    (text_clean.endswith(':') and word_count <= 8)
+                )
+            ):
+                return 'H4'
+            else:
+                return 'H3'
 
 def process_pdf_intelligently(pdf_path: Path) -> Dict[str, Any]:
     """Process PDF with universal extraction algorithm for 90%+ accuracy"""

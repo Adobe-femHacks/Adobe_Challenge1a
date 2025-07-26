@@ -7,12 +7,12 @@
             "page": 1
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "International Overview Software Testing ",
             "page": 2
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Foundation Level Extension – Agile Tester Qualifications ",
             "page": 2
         },
@@ -29,26 +29,6 @@
         {
             "level": "H2",
             "text": "2.1 Intended Audience ",
-            "page": 7
-        },
-        {
-            "level": "H4",
-            "text": "1. Professionals who have achieved in-depth testing experience in traditional methods and would like to get an Agile Tester Certificate. ",
-            "page": 7
-        },
-        {
-            "level": "H4",
-            "text": "2. Junior professional testers who are just starting in the testing profession, have received the Foundation Level certificate, and would like to know more about the tester’s role in an Agile environment. ",
-            "page": 7
-        },
-        {
-            "level": "H4",
-            "text": "3. Professionals who are relatively new to testing and are required to implement test approaches, methods and techniques in their day to day job in Agile projects. ",
-            "page": 7
-        },
-        {
-            "level": "H4",
-            "text": "4. Professionals who are experienced in their role (including unit testing) and need more understanding and knowledge about how to perform and manage testing on all levels in Agile projects. ",
             "page": 7
         },
         {
@@ -102,7 +82,7 @@
             "page": 12
         },
         {
-            "level": "H4",
+            "level": "H3",
             "text": "Identifier Reference ",
             "page": 12
         },
