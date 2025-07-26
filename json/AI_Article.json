@@ -1,0 +1,320 @@
+{
+  "title": "Artificial intelligence in healthcare",
+  "outline": [
+    {
+      "level": "H1",
+      "text": "Artificial intelligence in healthcare",
+      "page": 1
+    },
+    {
+      "level": "H1",
+      "text": "Applications, risks, and ethical and societal impacts",
+      "page": 1
+    },
+    {
+      "level": "H2",
+      "text": "STUDY",
+      "page": 1
+    },
+    {
+      "level": "H1",
+      "text": "Panel for the Future of Science and Technology",
+      "page": 1
+    },
+    {
+      "level": "H1",
+      "text": "EPRS | European Parliamentary Research Service",
+      "page": 1
+    },
+    {
+      "level": "H1",
+      "text": "Artificial intelligence in healthcare",
+      "page": 3
+    },
+    {
+      "level": "H1",
+      "text": "Applications, risks, and ethical and societal impacts",
+      "page": 3
+    },
+    {
+      "level": "H1",
+      "text": "Executive summary",
+      "page": 5
+    },
+    {
+      "level": "H2",
+      "text": "Methodology",
+      "page": 5
+    },
+    {
+      "level": "H2",
+      "text": "II",
+      "page": 6
+    },
+    {
+      "level": "H2",
+      "text": "III",
+      "page": 7
+    },
+    {
+      "level": "H1",
+      "text": "1. Extend AI regulatory frameworks and codes of practice to address healthcare-specific risks and requirements",
+      "page": 8
+    },
+    {
+      "level": "H1",
+      "text": "2. Promote multi-stakeholder engagement and co-creation throughout the whole lifecycle of medical AI algorithms",
+      "page": 8
+    },
+    {
+      "level": "H2",
+      "text": "IV",
+      "page": 8
+    },
+    {
+      "level": "H1",
+      "text": "6. Promote further research on clinical, ethical and technical robustness in medical AI",
+      "page": 9
+    },
+    {
+      "level": "H1",
+      "text": "7. Implement a strategy for reducing the European divide in medical AI",
+      "page": 10
+    },
+    {
+      "level": "H2",
+      "text": "VI",
+      "page": 10
+    },
+    {
+      "level": "H1",
+      "text": "Table of contents",
+      "page": 11
+    },
+    {
+      "level": "H1",
+      "text": "1. Introduction __________________________________________________________________ 1",
+      "page": 11
+    },
+    {
+      "level": "H1",
+      "text": "2. Artificial intelligence applications in healthcare ____________________________________ 4",
+      "page": 11
+    },
+    {
+      "level": "H2",
+      "text": "VII",
+      "page": 11
+    },
+    {
+      "level": "H1",
+      "text": "3. Risk of AI in healthcare_________________________________________________________ 15",
+      "page": 12
+    },
+    {
+      "level": "H1",
+      "text": "4. Risk assessment methodology __________________________________________________ 30",
+      "page": 12
+    },
+    {
+      "level": "H2",
+      "text": "VIII",
+      "page": 12
+    },
+    {
+      "level": "H1",
+      "text": "5. Policy options ________________________________________________________________ 46",
+      "page": 13
+    },
+    {
+      "level": "H2",
+      "text": "IX",
+      "page": 13
+    },
+    {
+      "level": "H1",
+      "text": "List of figures",
+      "page": 14
+    },
+    {
+      "level": "H1",
+      "text": "List of tables",
+      "page": 15
+    },
+    {
+      "level": "H2",
+      "text": "XI",
+      "page": 15
+    },
+    {
+      "level": "H1",
+      "text": "1. Introduction",
+      "page": 17
+    },
+    {
+      "level": "H1",
+      "text": "2. Artificial intelligence applications in healthcare",
+      "page": 20
+    },
+    {
+      "level": "H1",
+      "text": "3. Risk of AI in healthcare",
+      "page": 31
+    },
+    {
+      "level": "H1",
+      "text": "1. Patient harm due to AI errors",
+      "page": 31
+    },
+    {
+      "level": "H1",
+      "text": "2. Misuse of medical AI tools",
+      "page": 31
+    },
+    {
+      "level": "H1",
+      "text": "3. Risk of bias in medical AI and perpetuation of inequities",
+      "page": 31
+    },
+    {
+      "level": "H1",
+      "text": "4. Lack of transparency",
+      "page": 31
+    },
+    {
+      "level": "H1",
+      "text": "5. Privacy and security issues",
+      "page": 31
+    },
+    {
+      "level": "H1",
+      "text": "6. Gaps in AI accountability",
+      "page": 31
+    },
+    {
+      "level": "H1",
+      "text": "7. Obstacles to implementation in real-world healthcare",
+      "page": 31
+    },
+    {
+      "level": "H1",
+      "text": "4. Risk assessment methodology",
+      "page": 46
+    },
+    {
+      "level": "H3",
+      "text": "• Is your AI system using (online) continual learning?",
+      "page": 49
+    },
+    {
+      "level": "H3",
+      "text": "• Did you explain the decision(s) of the AI system to the users?",
+      "page": 49
+    },
+    {
+      "level": "H3",
+      "text": "• Did you consider diversity and representativeness of end-users and/or subjects in the data?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• Did you test for specific target groups or problematic use cases?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• What is the purpose and context of the algorithm?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• How good were the data used to train the algorithm?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• Were there sufficient data to train the algorithm?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• How well does the algorithm perform?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• Is the algorithm transferable to new clinical settings?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• Are the outputs of the algorithm clinically intelligible?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• How will this algorithm fit into and complement current workflows?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• Has use of the algorithm been shown to improve patient care and outcomes?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• Could the algorithm cause patient harm?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• Does use of the algorithm raise ethical, legal or social concerns?",
+      "page": 50
+    },
+    {
+      "level": "H3",
+      "text": "• Did you annotate your dataset in an objective, reproducible and standardised way?",
+      "page": 51
+    },
+    {
+      "level": "H3",
+      "text": "• Did you engage users in the design and development of the AI tool?",
+      "page": 51
+    },
+    {
+      "level": "H3",
+      "text": "• Did you evaluate the AI tool under diverse real-world scenarios?",
+      "page": 51
+    },
+    {
+      "level": "H3",
+      "text": "• Did you consult with the clinicians to determine which explainability methods suit them?",
+      "page": 51
+    },
+    {
+      "level": "H1",
+      "text": "1. Population & setting",
+      "page": 60
+    },
+    {
+      "level": "H1",
+      "text": "2. Patient demographic characteristics",
+      "page": 60
+    },
+    {
+      "level": "H1",
+      "text": "3. Model properties",
+      "page": 61
+    },
+    {
+      "level": "H1",
+      "text": "5. Policy options",
+      "page": 62
+    },
+    {
+      "level": "H2",
+      "text": "References",
+      "page": 69
+    }
+  ]
+}
