@@ -467,66 +467,85 @@ class IntelligentPDFExtractor:
         return blocks
     
     def _extract_title(self, blocks: List[TextBlock], doc_analysis: Dict) -> str:
-        """Advanced title extraction with contextual analysis"""
-        doc_type = doc_analysis.get('type', 'unknown')
-        
+        """Extract document title based on formatting and position, without hardcoding"""
         # Look for title in first few pages
         early_pages = [b for b in blocks if b.page <= 2]
         if not early_pages:
             return ""
         
-        if doc_type == 'form':
-            # Application form pattern detection
-            for block in early_pages:
-                text_lower = block.text.lower()
-                if ('application' in text_lower and 'form' in text_lower):
-                    return block.text.strip() + "  "
-            return ""
+        # Get potential title blocks based on formatting characteristics
+        title_candidates = []
+        font_analysis = doc_analysis.get('font_analysis', {})
+        body_size = font_analysis.get('body_size', 11)
+        max_size = font_analysis.get('max_size', 20)
         
-        elif doc_type == 'technical':
-            # Enhanced technical document title detection
-            overview_found = False
-            foundation_found = False
+        for block in early_pages:
+            score = 0
             
-            for block in early_pages:
-                text_lower = block.text.lower().strip()
-                if text_lower == 'overview':
-                    overview_found = True
-                elif 'foundation level extensions' in text_lower:
-                    foundation_found = True
-            
-            if overview_found and foundation_found:
-                return "Overview  Foundation Level Extensions  "
-            return ""
+            # Position is important - titles are typically at the top of first page
+            if block.page == 1 and block.y_position < 200:
+                score += 3
+            elif block.page == 1:
+                score += 1
+                
+            # Large font is a strong indicator
+            if block.font_size >= body_size * 1.5:
+                score += 4
+            elif block.font_size >= body_size * 1.3:
+                score += 3
+            elif block.font_size >= body_size * 1.1:
+                score += 1
+                
+            # If it's the largest font on the page, likely a title
+            if block.font_size >= max_size * 0.9:
+                score += 2
+                
+            # Formatting indicators
+            if block.is_bold:
+                score += 1
+            if block.is_centered:
+                score += 2
+            if block.is_all_caps:
+                score += 1
+                
+            # Appropriate length for titles
+            if 2 <= block.word_count <= 10:
+                score += 1
+            elif block.word_count > 15:
+                score -= 2  # Too long for a title
+                
+            # Check if it looks like a form field or page number
+            if self.analyzer.is_form_field(block.text) or re.match(r'^\d+$', block.text.strip()):
+                score -= 3
+                
+            # Not likely to be a heading if it ends with period
+            if block.text.strip().endswith('.'):
+                score -= 1
+                
+            # Add to candidates if score is positive
+            if score >= 3:
+                title_candidates.append((block, score))
         
-        elif doc_type == 'business':
-            # Advanced RFP title extraction
-            rfp_indicators = 0
-            for block in early_pages:
-                text_lower = block.text.lower()
-                if 'rfp' in text_lower:
-                    rfp_indicators += 1
-                if 'request for proposal' in text_lower:
-                    rfp_indicators += 2
-                if 'ontario digital library' in text_lower:
-                    rfp_indicators += 2
-            
-            if rfp_indicators >= 3:
-                return "RFP:Request for Proposal To Present a Proposal for Developing the Business Plan for the Ontario Digital Library  "
-            return ""
+        # Sort by score (highest first) and then by position (top first)
+        title_candidates.sort(key=lambda x: (-x[1], x[0].page, x[0].y_position))
         
-        elif doc_type == 'educational':
-            # Educational document title extraction
-            for block in early_pages:
-                text = block.text.strip()
-                text_lower = text.lower()
-                if ('parsippany' in text_lower and 'troy hills' in text_lower and 'stem pathways' in text_lower):
-                    return text
-            return ""
+        # Return the highest scoring candidate
+        if title_candidates:
+            # Clean up title text
+            title_text = title_candidates[0][0].text.strip()
+            # Remove trailing periods, extra spaces
+            title_text = re.sub(r'\s+', ' ', title_text)
+            title_text = re.sub(r'\.+$', '', title_text)
+            return title_text
         
-        elif doc_type == 'event':
-            # Events typically don't have formal titles
-            return ""
+        # Fallback - first significant text block on page 1
+        page1_blocks = [b for b in early_pages if b.page == 1 
+                       and b.word_count >= 2 and len(b.text.strip()) > 10]
+        if page1_blocks:
+            page1_blocks.sort(key=lambda b: b.y_position)  # Sort by vertical position
+            for block in page1_blocks:
+                if not self.analyzer.is_form_field(block.text):
+                    return block.text.strip()
         
         return ""
     

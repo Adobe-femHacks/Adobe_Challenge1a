@@ -1,0 +1,85 @@
+{
+    "title": "GENERATIVE AND DISCRIMINATIVE CLASSIFIERS: NAIVE BAYES AND LOGISTIC REGRESSION",
+    "outline": [
+        {
+            "level": "H1",
+            "text": "GENERATIVE AND DISCRIMINATIVE CLASSIFIERS: NAIVE BAYES AND LOGISTIC REGRESSION ",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "1 Learning Classiﬁers based on Bayes Rule ",
+            "page": 1
+        },
+        {
+            "level": "H2",
+            "text": "1.1 Unbiased Learning of Bayes Classiﬁers is Impractical ",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "2 Naive Bayes Algorithm ",
+            "page": 3
+        },
+        {
+            "level": "H2",
+            "text": "2.1 Conditional Independence ",
+            "page": 3
+        },
+        {
+            "level": "H2",
+            "text": "2.2 Derivation of Naive Bayes Algorithm ",
+            "page": 3
+        },
+        {
+            "level": "H2",
+            "text": "2.3 Naive Bayes for Discrete-Valued Inputs ",
+            "page": 5
+        },
+        {
+            "level": "H2",
+            "text": "2.4 Naive Bayes for Continuous Inputs ",
+            "page": 6
+        },
+        {
+            "level": "H1",
+            "text": "3 Logistic Regression ",
+            "page": 7
+        },
+        {
+            "level": "H2",
+            "text": "3.2 Estimating Parameters for Logistic Regression ",
+            "page": 10
+        },
+        {
+            "level": "H2",
+            "text": "3.3 Regularization in Logistic Regression ",
+            "page": 12
+        },
+        {
+            "level": "H2",
+            "text": "3.4 Logistic Regression for Functions with Many Discrete Val- ues ",
+            "page": 13
+        },
+        {
+            "level": "H1",
+            "text": "4 Relationship Between Naive Bayes Classiﬁers and Logistic Regression ",
+            "page": 14
+        },
+        {
+            "level": "H1",
+            "text": "5 What You Should Know ",
+            "page": 15
+        },
+        {
+            "level": "H1",
+            "text": "6 Further Reading ",
+            "page": 16
+        },
+        {
+            "level": "H1",
+            "text": "7 Acknowledgements ",
+            "page": 17
+        }
+    ]
+}
