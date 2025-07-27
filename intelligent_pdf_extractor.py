@@ -51,13 +51,6 @@ class IntelligentDocumentAnalyzer:
             r'^[a-z]+\s*:$',  # Single word with colon
         ]
         
-        # Document classification keywords (rule-based)
-        self.form_keywords = ['application', 'form', 'advance', 'grant']
-        self.technical_doc_keywords = ['syllabus', 'foundation', 'level', 'testing', 'qualification']
-        self.business_doc_keywords = ['rfp', 'request', 'proposal', 'business', 'plan']
-        self.educational_keywords = ['pathways', 'school', 'district', 'academic']
-        self.event_keywords = ['rsvp', 'invitation', 'event', 'party']
-        
         # Advanced structural patterns for different heading types
         self.primary_heading_patterns = [
             r'^(revision\s+history|table\s+of\s+contents|acknowledgements?)\b',
@@ -70,7 +63,7 @@ class IntelligentDocumentAnalyzer:
             r'^\d+\.\d+\s+[a-z]',  # Subsections like 2.1, 2.2
             r'^[a-z]+\s+(outcomes?|objectives?|requirements?)\b',
             r'^(intended\s+audience|career\s+paths|learning\s+objectives)\b',
-            r'^(business\s+outcomes?|content|trademarks?)\b',
+            r'^(business\s+outcomes?|content|trademarks?)$',
         ]
         
         self.business_heading_patterns = [
@@ -97,59 +90,19 @@ class IntelligentDocumentAnalyzer:
             r'^\s*page\s+\d+\s*$',  # Page numbers
             r'^\d+\s*$',  # Just a number
         ]
-        
-        # Context-aware heading indicators
-        self.context_indicators = {
-            'technical': ['syllabus', 'foundation', 'agile', 'tester'],
-            'business': ['rfp', 'proposal', 'ontario', 'library'],
-            'educational': ['pathway', 'stem', 'school'],
-            'event': ['hope', 'see', 'there', 'party']
-        }
     
     def analyze_document(self, blocks: List[TextBlock]) -> Dict[str, Any]:
         """Analyze document to determine type and structure"""
         all_text = " ".join([block.text.lower() for block in blocks])
         
-        # Detect document type
-        doc_type = self._detect_document_type(all_text)
-        
         # Analyze text patterns
         font_analysis = self._analyze_fonts(blocks)
         
         return {
-            'type': doc_type,
+            'type': 'generic',  # No longer using specific document types
             'font_analysis': font_analysis,
             'all_text': all_text
         }
-    
-    def _detect_document_type(self, text: str) -> str:
-        """Rule-based document type detection"""
-        text_lower = text.lower()
-        
-        # Count keyword matches for each type
-        form_score = sum(1 for keyword in self.form_keywords if keyword in text_lower)
-        tech_score = sum(1 for keyword in self.technical_doc_keywords if keyword in text_lower)
-        business_score = sum(1 for keyword in self.business_doc_keywords if keyword in text_lower)
-        edu_score = sum(1 for keyword in self.educational_keywords if keyword in text_lower)
-        event_score = sum(1 for keyword in self.event_keywords if keyword in text_lower)
-        
-        # Simple rule: highest score wins, with minimum threshold
-        scores = {
-            'form': form_score,
-            'technical': tech_score, 
-            'business': business_score,
-            'educational': edu_score,
-            'event': event_score
-        }
-        
-        max_type = max(scores, key=scores.get)
-        max_score = scores[max_type]
-        
-        # Require at least 2 matches to classify
-        if max_score >= 2:
-            return max_type
-        
-        return 'unknown'
     
     def _analyze_fonts(self, blocks: List[TextBlock]) -> Dict[str, Any]:
         """Analyze font usage patterns"""
@@ -203,11 +156,6 @@ class IntelligentDocumentAnalyzer:
         if self.is_form_field(text):
             return False
         
-        doc_type = doc_analysis.get('type', 'unknown')
-        
-        if doc_type == 'form':
-            return False
-        
         # Advanced noise filtering
         for pattern in self.noise_patterns:
             if re.search(pattern, text_lower):
@@ -242,89 +190,12 @@ class IntelligentDocumentAnalyzer:
             if re.match(pattern, text_lower):
                 return True
         
-        # Layer 3: Document-type specific advanced patterns
-        if doc_type == 'technical':
-            if self._is_technical_heading(text_lower, word_count):
-                return True
-        elif doc_type == 'business':
-            if self._is_business_heading(text_lower, text_clean, word_count):
-                return True
-        elif doc_type == 'educational':
-            if self._is_educational_heading(text_lower, word_count):
-                return True
-        elif doc_type == 'event':
-            if self._is_event_heading(text_lower, word_count):
-                return True
-        
-        # Layer 4: Advanced formatting analysis
+        # Layer 3: Generic formatting analysis
         if self._analyze_formatting_context(block, text_clean, word_count, doc_analysis):
-            # NEW: Only allow as heading if not a paragraph (short, not ending with period)
+            # Only allow as heading if not a paragraph (short, not ending with period)
             if word_count <= 12 and not (word_count > 8 and text_clean.endswith('.')):
                 return True
         
-        # Layer 5: Fallback for very specific patterns we might have missed
-        if doc_type == 'event':
-            if ('hope' in text_lower or 'see' in text_lower or 'there' in text_lower) and word_count <= 8:
-                return True
-        
-        return False
-    
-    def _is_technical_heading(self, text_lower: str, word_count: int) -> bool:
-        """Advanced technical document heading detection"""
-        # Specific technical patterns that were missed
-        tech_patterns = [
-            r'^\d+\.\s+(introduction|overview|business)\s+', # Numbered introductions
-            r'^(intended\s+audience|career\s+paths|learning\s+objectives)$',
-            r'^(entry\s+requirements|structure\s+and\s+course|keeping\s+it\s+current)$',
-            r'^(business\s+outcomes?|content|trademarks?)$',
-            r'^(documents?\s+and\s+web\s+sites?)$',
-        ]
-        
-        for pattern in tech_patterns:
-            if re.match(pattern, text_lower):
-                return True
-        return False
-    
-    def _is_business_heading(self, text_lower: str, text_clean: str, word_count: int) -> bool:
-        """Advanced business document heading detection"""
-        # Comprehensive business patterns
-        for pattern in self.business_heading_patterns:
-            if re.search(pattern, text_lower):
-                return True
-        
-        # Advanced question patterns
-        if text_lower.startswith(('what could', 'for each ontario')):
-            return True
-        
-        # Section headers with colons (more permissive)
-        if (text_clean.endswith(':') and 2 <= word_count <= 8):
-            business_keywords = ['access', 'funding', 'training', 'support', 'guidance', 
-                               'decision', 'governance', 'points', 'purchasing', 'technological']
-            if any(word in text_lower for word in business_keywords):
-                return True
-        
-        # Phase and appendix patterns
-        if re.match(r'^(phase\s+[ivx]+|appendix\s+[abc])', text_lower):
-            return True
-        
-        # Numbered governance sections
-        if re.match(r'^\d+\.\s+(preamble|terms\s+of\s+reference|membership)', text_lower):
-            return True
-        
-        return False
-    
-    def _is_educational_heading(self, text_lower: str, word_count: int) -> bool:
-        """Educational document heading patterns"""
-        # More permissive educational patterns
-        if 'pathway' in text_lower and ('options' in text_lower or 'regular' in text_lower):
-            return True
-        return False
-    
-    def _is_event_heading(self, text_lower: str, word_count: int) -> bool:
-        """Event document heading patterns"""
-        # Event-specific patterns
-        if ('hope' in text_lower and 'see' in text_lower and 'there' in text_lower):
-            return True
         return False
     
     def _analyze_formatting_context(self, block: TextBlock, text_clean: str, word_count: int, doc_analysis: Dict) -> bool:
@@ -388,8 +259,8 @@ class IntelligentPDFExtractor:
             # Extract title
             title = self._extract_title(all_blocks, doc_analysis)
             
-            # Extract outline
-            outline = self._extract_outline(all_blocks, doc_analysis)
+            # Extract outline - pass title to avoid duplication
+            outline = self._extract_outline(all_blocks, doc_analysis, title)
             
             doc.close()
             
@@ -549,14 +420,8 @@ class IntelligentPDFExtractor:
         
         return ""
     
-    def _extract_outline(self, blocks: List[TextBlock], doc_analysis: Dict) -> List[Dict[str, Any]]:
+    def _extract_outline(self, blocks: List[TextBlock], doc_analysis: Dict, title: str) -> List[Dict[str, Any]]:
         """Advanced outline extraction with adaptive filtering"""
-        doc_type = doc_analysis.get('type', 'unknown')
-        
-        # Forms should have NO headings
-        if doc_type == 'form':
-            return []
-        
         # Sort blocks by page and position
         blocks.sort(key=lambda b: (b.page, b.y_position))
         
@@ -564,7 +429,19 @@ class IntelligentPDFExtractor:
         raw_headings = []
         seen_texts = set()
         
+        # Add the title text to seen_texts to avoid duplication
+        if title:
+            title_normalized = re.sub(r'\s+', ' ', title.lower())
+            title_normalized = re.sub(r'[^a-z0-9\s]', '', title_normalized)
+            seen_texts.add(title_normalized)
+        
         for block in blocks:
+            # Skip if text is very similar to the document title
+            if title:
+                block_text_lower = block.text.lower().strip()
+                if self._text_similarity(block_text_lower, title.lower()) > 0.7:
+                    continue  # Skip blocks that are too similar to the title
+            
             if self.analyzer.is_true_heading(block.text, block, doc_analysis):
                 text_clean = block.text.strip()
                 
@@ -584,16 +461,6 @@ class IntelligentPDFExtractor:
                     
                 seen_texts.add(text_normalized)
                 raw_headings.append((block, text_clean))
-        
-        # Document-type specific filtering and enhancement
-        if doc_type == 'technical':
-            raw_headings = self._enhance_technical_headings(raw_headings, blocks)
-        elif doc_type == 'business':
-            raw_headings = self._enhance_business_headings(raw_headings, blocks)
-        elif doc_type == 'educational':
-            raw_headings = self._filter_educational_headings(raw_headings)
-        elif doc_type == 'event':
-            raw_headings = self._filter_event_headings(raw_headings)
         
         # Convert to final outline format
         outline = []
@@ -618,71 +485,6 @@ class IntelligentPDFExtractor:
         intersection = len(words1.intersection(words2))
         union = len(words1.union(words2))
         return intersection / union
-    
-    def _enhance_technical_headings(self, headings: List, all_blocks: List[TextBlock]) -> List:
-        """Enhance technical document headings to match expected count"""
-        # Look for missing technical headings
-        missing_patterns = [
-            r'acknowledgements?',
-            r'\d+\.\s+introduction',
-            r'intended\s+audience',
-            r'career\s+paths',
-            r'learning\s+objectives',
-            r'entry\s+requirements',
-            r'structure\s+and\s+course',
-            r'keeping\s+it\s+current',
-            r'business\s+outcomes?',
-            r'documents?\s+and\s+web\s+sites?'
-        ]
-        
-        for block in all_blocks:
-            text_lower = block.text.lower().strip()
-            for pattern in missing_patterns:
-                if re.search(pattern, text_lower) and len(text_lower.split()) <= 8:
-                    # Check if not already included
-                    already_included = any(pattern in h[1].lower() for h in headings)
-                    if not already_included:
-                        headings.append((block, block.text.strip()))
-        
-        return headings
-    
-    def _enhance_business_headings(self, headings: List, all_blocks: List[TextBlock]) -> List:
-        """Enhance business document headings"""
-        # Look for missing business headings with more permissive patterns
-        for block in all_blocks:
-            text_lower = block.text.lower().strip()
-            text_clean = block.text.strip()
-            
-            # Look for missed section headers
-            if (text_clean.endswith(':') and 2 <= len(text_clean.split()) <= 8 and
-                any(word in text_lower for word in ['access', 'decision', 'governance', 'funding', 
-                                                   'points', 'guidance', 'training', 'purchasing', 
-                                                   'support', 'technological'])):
-                already_included = any(text_clean.lower() in h[1].lower() for h in headings)
-                if not already_included:
-                    headings.append((block, text_clean))
-        
-        return headings
-    
-    def _filter_educational_headings(self, headings: List) -> List:
-        """Filter educational headings to match expected output"""
-        # Keep only PATHWAY OPTIONS and similar
-        filtered = []
-        for block, text in headings:
-            text_upper = text.upper()
-            if 'PATHWAY' in text_upper and 'OPTIONS' in text_upper:
-                filtered.append((block, text))
-        return filtered
-    
-    def _filter_event_headings(self, headings: List) -> List:
-        """Filter event headings to match expected output"""
-        # Keep only the main hope message
-        filtered = []
-        for block, text in headings:
-            text_lower = text.lower()
-            if 'hope' in text_lower and 'see' in text_lower and 'there' in text_lower:
-                filtered.append((block, text))
-        return filtered
     
     def _determine_heading_level(self, block: TextBlock, doc_analysis: Dict) -> str:
         """Advanced heading level determination with contextual analysis"""

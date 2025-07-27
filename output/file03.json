@@ -3,11 +3,6 @@
     "outline": [
         {
             "level": "H2",
-            "text": "Ontario’s Libraries Working Together ",
-            "page": 1
-        },
-        {
-            "level": "H2",
             "text": "Ontario’s Digital Library ",
             "page": 2
         },
@@ -110,46 +105,6 @@
             "level": "H1",
             "text": "Appendix C: ODL’s Envisioned Electronic Resources ",
             "page": 14
-        },
-        {
-            "level": "H2",
-            "text": "Equitable access for all Ontarians: ",
-            "page": 4
-        },
-        {
-            "level": "H2",
-            "text": "Shared decision-making and accountability: ",
-            "page": 4
-        },
-        {
-            "level": "H3",
-            "text": "Shared governance structure: ",
-            "page": 4
-        },
-        {
-            "level": "H3",
-            "text": "Shared funding: ",
-            "page": 4
-        },
-        {
-            "level": "H2",
-            "text": "Local points of entry: ",
-            "page": 5
-        },
-        {
-            "level": "H3",
-            "text": "Guidance and Advice: ",
-            "page": 5
-        },
-        {
-            "level": "H2",
-            "text": "Provincial Purchasing & Licensing: ",
-            "page": 5
-        },
-        {
-            "level": "H3",
-            "text": "Technological Support: ",
-            "page": 5
         }
     ]
 }

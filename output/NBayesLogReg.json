@@ -3,11 +3,6 @@
     "outline": [
         {
             "level": "H1",
-            "text": "GENERATIVE AND DISCRIMINATIVE CLASSIFIERS: NAIVE BAYES AND LOGISTIC REGRESSION ",
-            "page": 1
-        },
-        {
-            "level": "H1",
             "text": "1 Learning Classiﬁers based on Bayes Rule ",
             "page": 1
         },
